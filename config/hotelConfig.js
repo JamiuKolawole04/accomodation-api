@@ -30,7 +30,9 @@ const getHotelsConfig = (query, min = 1, max = 999, limit) => {
   return Hotels.find({
     ...query,
     cheapestPrice: { $gt: min, $lt: max },
-  }).limit(limit);
+  })
+    .limit(limit)
+    .populate("rooms");
 };
 
 const countDocuments = (doc, type) => {
