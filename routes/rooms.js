@@ -1,15 +1,13 @@
 const router = require("express").Router();
 
 const {
-    createRoom,
-    updateRoom,
-    deleteRoom,
-    getRoom,
-    getRooms,
-    updateRoomAvailability
+  createRoom,
+  updateRoom,
+  deleteRoom,
+  getRoom,
+  getRooms,
+  updateRoomAvailability,
 } = require("../controllers/roomsCtrl");
-
-
 
 const { verifyAdmin } = require("../utils/jwt");
 
@@ -22,16 +20,13 @@ router.get("/", getRooms);
 // GET ROOM
 // UPDATE ROOM
 
-router.route("/:id")
-    .get(getRoom)
-    .put(verifyAdmin, updateRoom)
+router.route("/:id").get(getRoom).put(verifyAdmin, updateRoom);
 
-router.put("/availability/:id", updateRoomAvailability)
-// DELETE ROOM    
+// update rooms numbers or availability
+router.put("/availability/:id", updateRoomAvailability);
+// DELETE ROOM
 router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
 
-
 module.exports = router;
-
 
 module.exports = router;

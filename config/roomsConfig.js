@@ -1,52 +1,52 @@
 const Room = require("../models/room");
 
-
 const createRoomConfig = (input) => {
-    const newRoom = new Room(input);
-    return newRoom.save();
-}
+  const newRoom = new Room(input);
+  return newRoom.save();
+};
 
 const updateRoomConfig = (id, data) => {
-    return Room.findByIdAndUpdate(id,
-        {
-            $set: data
-        },
-        {
-            new: true
-        }
-    )
-}
+  return Room.findByIdAndUpdate(
+    id,
+    {
+      $set: data,
+    },
+    {
+      new: true,
+    }
+  );
+};
 
 const getRoomConfig = (id) => {
-    return Room.findOne({ _id: id })
-}
+  return Room.findOne({ _id: id });
+};
 
 const getRoomsConfig = () => {
-    return Room.find({});
-}
+  return Room.find({});
+};
 
 const deleteRoomConfig = (id) => {
-    return Room.findByIdAndDelete(id);
-}
+  return Room.findByIdAndDelete(id);
+};
 
 const updateOneRoomConfig = (id, date) => {
-    return Room.updateOne(
-        { "roomNumbers._id": id },
-        {
-            $push: {
-                "roomNumbers.$.unavailableDates": date
-            }
-        },
-        { new: true }
-    )
-}
-
+  return Room.updateOne(
+    { "roomNumbers._id": id },
+    {
+      // updating nested properties under a particular rooms needs the dollar sign
+      $push: {
+        "roomNumbers.$.unavailableDates": date,
+      },
+    },
+    { new: true }
+  );
+};
 
 module.exports = {
-    createRoomConfig,
-    updateRoomConfig,
-    getRoomConfig,
-    getRoomsConfig,
-    deleteRoomConfig,
-    updateOneRoomConfig
-}
+  createRoomConfig,
+  updateRoomConfig,
+  getRoomConfig,
+  getRoomsConfig,
+  deleteRoomConfig,
+  updateOneRoomConfig,
+};
