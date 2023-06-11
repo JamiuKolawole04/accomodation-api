@@ -15,7 +15,7 @@ const roomsRoute = require("./routes/rooms");
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
-const origins = ["http://localhost:3000", "https://booking-api.cyclic.app"];
+const origins = ["http://localhost:3000", "https://accommodation.netlify.app"];
 
 //middlewares
 app.use(express.json());
