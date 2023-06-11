@@ -15,12 +15,14 @@ const roomsRoute = require("./routes/rooms");
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
+const origins = ["http://localhost:3000", "https://booking-api.cyclic.app"];
+
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: " http://localhost:3000 ",
+    origin: origins,
     credentials: true,
   })
 );
