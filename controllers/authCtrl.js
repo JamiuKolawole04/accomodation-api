@@ -14,7 +14,14 @@ const register = asyncWrapper(async (req, res, next) => {
     ...req.body,
   });
   if (user) {
-    return res.status(StatusCodes.CREATED).json({ msg: "user created" });
+    return res
+      .status(StatusCodes.CREATED)
+      .json({
+        success: true,
+        statusCode: StatusCodes.CREATED,
+        msg: "User created",
+        details: user,
+      });
   }
 });
 

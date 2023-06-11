@@ -18,18 +18,15 @@ const UserSchema = new Schema(
     },
     country: {
       type: String,
-      required: [true, "country is required"],
     },
     img: {
       type: String,
     },
     city: {
       type: String,
-      required: [true, "city is required"],
     },
     phone: {
       type: String,
-      required: [true, "phone number is required"],
     },
     password: {
       type: String,
